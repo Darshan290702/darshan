@@ -1,0 +1,53 @@
+question_data = {
+    "QUESTION1": {
+        "question": "Which is the silicon valley of India?",
+        "options": {"A": "Delhi", "B": "Hyderabad", "C": "Chennai", "D": "Bengaluru"},
+        "correct_ans": "D"
+    },
+    "QUESTION2": {
+        "question": "Who invented the exam?",
+        "options": {"A": "Isaac Newton", "B": "Galileo Galilei", "C": "Henry Fischel", "D": "Jack Ma"},
+        "correct_ans": "C"
+    },
+    "QUESTION3": {
+        "question": "What is the capital of Telangana?",
+        "options": {"A": "Delhi", "B": "Hyderabad", "C": "Mysore", "D": "Mumbai"},
+        "correct_ans": "B"
+    }
+}
+
+def result(answer, score):
+    user_answer = input("Enter your option: ").upper()
+    if user_answer.upper()== answer:
+        print("Correct answer!")
+        score += 1
+    else:
+        print("Incorrect")
+    return score
+
+def func(question_data):
+    score = 0
+    print("WELCOME TO THE QUIZ!")
+    print("INSTRUCTIONS:")
+    print("1. Enter only the option letter, not the whole answer.")
+    print("2. There are three questions, presented one after another.")
+    print("3. You are not allowed to take the quiz if you do not agree with the instructions.")
+    print("4.Each question carries one marks and no negative marks ")
+    
+    choice = int(input('If you agree, enter "1". Otherwise, enter "0": '))
+    
+    if choice == 1:
+        limit = len(question_data)
+        for i in range(1, limit + 1):
+            question_key = f"QUESTION{i}"
+            print(f"\n{question_data[question_key]['question']}")
+            options = question_data[question_key]['options']
+            for option, text in options.items():
+                print(f"{option}: {text}")
+            score = result(question_data[question_key]['correct_ans'], score)
+        print(f"\nStudent scored: {score} marks")
+        print("THANK YOU DEAR 🥰")
+    else:
+        print("You chose not to take the quiz.")
+
+func(question_data)
